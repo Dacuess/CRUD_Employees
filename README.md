@@ -14,4 +14,5 @@
 
 **Cualquier decision de diseño o suposicion importante:**
   No se ha podido realizar con Kafka porque el topic no me salia creado y al hacer la peticion con el producer saltaba un timeout. 
-  He revisado temas de configuracion pero no he podido ver nada, es la primera vez que trabajo con Kafka, supongo que tendria que haber instalado algo de Kafka o del Zookeper, pero no he podido.  
+  He revisado temas de configuracion pero no he podido ver nada, es la primera vez que trabajo con Kafka, supongo que tendria que haber instalado algo de Kafka o del Zookeper, pero no he podido. 
+  El codigo de Kafka se encuentra en la rama feature/kafka
