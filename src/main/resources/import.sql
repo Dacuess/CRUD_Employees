@@ -1,0 +1,1 @@
+insert into TEAMMATE (ID, FIRST_NAME, LAST_NAME, EMAIL, POSITION, START_DATE, ACTIVE) values ('1b25ba72-67da-4146-b5ca-25a9f47b2507', 'DAVID', 'CUESTA', 'kuesta.93@gmail.com', 'DEVELOPER', '2025-06-03', false);
