@@ -1,4 +1,4 @@
-package com.kowmadmood.services;
+package com.knowmadmood.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.knowmadmood.dtos.TeammateDTO;
 import com.knowmadmood.exceptions.CrudEmployeesExceptions;
-import com.kowmadmood.models.Teammate;
-import com.kowmadmood.persistence.TeammateRepository;
+import com.knowmadmood.models.Teammate;
+import com.knowmadmood.persistence.TeammateRepository;
 
 @Service
 public class CrudEmployeesServiceImpl implements CrudEmployeesService {

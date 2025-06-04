@@ -1,4 +1,4 @@
-package com.kowmadmood.services;
+package com.knowmadmood.services;
 
 import java.util.List;
 import java.util.UUID;

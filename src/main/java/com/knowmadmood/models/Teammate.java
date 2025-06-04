@@ -1,4 +1,4 @@
-package com.kowmadmood.models;
+package com.knowmadmood.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;

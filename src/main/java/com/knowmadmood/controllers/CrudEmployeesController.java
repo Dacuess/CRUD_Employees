@@ -1,4 +1,4 @@
-package com.kowmadmood.controllers;
+package com.knowmadmood.controllers;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.knowmadmood.dtos.TeammateDTO;
 import com.knowmadmood.exceptions.CrudEmployeesExceptions;
-import com.kowmadmood.services.CrudEmployeesService;
+import com.knowmadmood.services.CrudEmployeesService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

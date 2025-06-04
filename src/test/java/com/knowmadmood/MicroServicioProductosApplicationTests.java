@@ -1,10 +1,10 @@
-package com.kowmadmood;
+package com.knowmadmood;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MicroServiceCrudEmployeesApplicationTests {
+class MicroServicioProductosApplicationTests {
 
 	@Test
 	void contextLoads() {
