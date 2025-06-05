@@ -14,7 +14,7 @@
    CrudEmployeesController -> CrudEmployeesService -> CrudEmployeesServiceImpl -> TeammateRepository
 
 **Cualquier decision de diseño o suposicion importante:**
-  He tenido problemas para arrancar Kafka en local. Me he tenido que instalar Docker y ejecutar el comando "docker-compose up -d" para levantar los servicios
+  He tenido problemas para arrancar Kafka en local. Me he tenido que instalar Docker (que también he tenido problemas) y ejecutar el comando "docker-compose up -d" para levantar los servicios
   incluidos en el docker-compose.yml, sin embargo a la hora de levantar el Zookeper aparecen los siguientes errores:
             ERROR Timed out waiting for connection to Zookeeper server
             ERROR Unable to resolve address: zookeeper:2181 
