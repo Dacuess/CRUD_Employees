@@ -58,6 +58,11 @@
 			<version>5.13.0</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Dependencia de Spring Boot Starter para Kafka -->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
