@@ -254,8 +254,6 @@ class CrudEmployeesServiceImplTest {
 	@Test
 	void createTeammateTestOK() {
 
-		UUID uuid = UUID.randomUUID();
-
 		TeammateDTO t2 = new TeammateDTO();
 		t2.setFirstName("TEST");
 		t2.setLastName("TEST");
