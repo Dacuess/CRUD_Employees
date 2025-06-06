@@ -5,6 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.knowmadmood.dtos.TeammateDTO;
 import com.knowmadmood.exceptions.CrudEmployeesExceptions;
 import com.knowmadmood.models.Teammate;
@@ -20,29 +24,41 @@ public class KafkaConsumer {
 	}
 
 	@KafkaListener(topics = "test-topic", groupId = "test-group")
-	public void consume(TeammateDTO message) {
+	private void consume(String message) throws JsonMappingException, JsonProcessingException {
 
-		TeammateDTO dto = message;
+		ObjectMapper mapper = new ObjectMapper();
 
-		Teammate teammate = new Teammate();
+		// Registrar este modulo para que Jackson pueda leer las LocalDate, ya que sino
+		// da una excepcion tipo:
+		// com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8
+		// date/time type java.time.LocalDate not supported by default
+		mapper.registerModule(new JavaTimeModule());
+		try {
+			TeammateDTO dto = mapper.readValue(message, TeammateDTO.class);
 
-		if (dto != null && !StringUtils.isBlank(dto.getEmail())) {
+			Teammate teammate = new Teammate();
 
-			teammate.setFirstName(dto.getFirstName());
-			teammate.setLastName(dto.getLastName());
-			teammate.setPosition(dto.getPosition());
-			teammate.setActive(dto.getActive());
-			teammate.setEmail(dto.getEmail());
-			teammate.setStartDate(dto.getStartDate());
+			if (dto != null && !StringUtils.isBlank(dto.getEmail())) {
 
-			try {
-				repository.save(teammate);
-			} catch (Exception e) {
-				throw new CrudEmployeesExceptions(HttpStatus.CONFLICT, "You are trying to insert an existent UUID.");
+				teammate.setFirstName(dto.getFirstName());
+				teammate.setLastName(dto.getLastName());
+				teammate.setPosition(dto.getPosition());
+				teammate.setActive(dto.getActive());
+				teammate.setEmail(dto.getEmail());
+				teammate.setStartDate(dto.getStartDate());
+
+				try {
+					repository.save(teammate);
+				} catch (Exception e) {
+					throw new CrudEmployeesExceptions(HttpStatus.CONFLICT,
+							"You are trying to insert an existent UUID.");
+				}
+			} else {
+				throw new CrudEmployeesExceptions(HttpStatus.INTERNAL_SERVER_ERROR,
+						"Can not insert information in databa base, because there are some empty information.");
 			}
-		} else {
-			throw new CrudEmployeesExceptions(HttpStatus.INTERNAL_SERVER_ERROR,
-					"Can not insert information in databa base, because there are some empty information.");
+		} catch (Exception e) {
+			throw e;
 		}
 
 	}

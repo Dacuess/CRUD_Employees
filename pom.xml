@@ -59,6 +59,12 @@
 			<version>5.13.0</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.17.0</version> <!-- o la que corresponda a tu versión de
+			Jackson -->
+		</dependency>
 		<!-- Dependencia de Spring Boot Starter para Kafka -->
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
