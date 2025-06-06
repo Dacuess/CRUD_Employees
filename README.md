@@ -1,7 +1,7 @@
 # CRUD_Employees (Funcionando con KAFKA)
 **Instrucciones para compilar y ejecutar la aplicacion:**
   1- Arrancar Docker Desktop
-  2- En la ruta del proyecto ejecutar el comando: docker compose up -d
+  2- En la ruta del proyecto donde este el proyecto en local, abrir un cmd y ejecutar el comando: docker compose up -d
   2- Se arrancará en el puerto 9000. Para ver el Swagger con la API hay que poner http://localhost:9000/swagger-ui/index.html# en el buscador
 
 **Instrucciones para ejecutar los test:**
