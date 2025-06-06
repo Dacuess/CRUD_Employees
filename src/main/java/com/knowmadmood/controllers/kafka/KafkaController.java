@@ -1,7 +1,8 @@
-package com.knowmadmood.controllers;
+package com.knowmadmood.controllers.kafka;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.knowmadmood.dtos.TeammateDTO;
@@ -16,6 +17,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
+@RequestMapping(path = "/kafka")
 @Tag(name = "Kafka Controller", description = "APIs for produce messages")
 public class KafkaController {
 
@@ -25,12 +27,11 @@ public class KafkaController {
 		this.kafkaProducer = kafkaProducer;
 	}
 
-	@PostMapping("/send")
 	@Operation(summary = "Send Message", description = "Send Message by Kafka")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Message sent ok", content = @Content(schema = @Schema(implementation = TeammateUUIDDTO.class))),
 			@ApiResponse(responseCode = "500", description = "Internal Server error", content = @Content(schema = @Schema())) })
-	
+	@PostMapping("/send")	
 	public String sendMessage(@RequestBody TeammateDTO message) {
 		kafkaProducer.sendMessage("test-topic", message);
 		return "Message sent by Kafka: " + message.toString();
